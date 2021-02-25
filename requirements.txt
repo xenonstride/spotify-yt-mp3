@@ -1,0 +1,5 @@
+requests==2.25.1
+pytube==10.5.1
+moviepy==1.0.3
+eyed3==0.9.6
+google-api-python-client==1.12.8
