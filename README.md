@@ -5,8 +5,8 @@ Dependencies : pytube, moviepy, eyed3, google-api-python-client
 
 You can also install dependencies using ```pip install -r requirements.txt```
 
-Replace DIR in line 10 with your music directory
+Replace DIR in line 29 with your music directory
 
-Add your spotify developer client id and secret (get it from https://developer.spotify.com/dashboard/)
+Add your spotify developer client id and secret in line 9 and 10 (get it from https://developer.spotify.com/dashboard/)
 
 Also add your YouTube Data API key in line 94
