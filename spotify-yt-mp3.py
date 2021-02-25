@@ -129,15 +129,14 @@ def main(album_name):
         files = sorted(iglob(os.path.join(os.getcwd(),'*')),key=os.path.getctime,reverse=True)
         old_title = files[0].replace(os.getcwd()+'/','')
         new_title = requested_tracks[i]+ f' [{album_name}]'
-        if ('"' or "'" or "\\" or "/") in new_title :
-            if '"' in new_title :
-                new_title = new_title.replace('"','')
-            if "'" in new_title :
-                new_title = new_title.replace("'",'')
-            if "\\" in new_title :
-                new_title = new_title.replace("\\",'')
-            if "/" in new_title :
-                new_title = new_title.replace("/",'')
+        if '"' in new_title :
+            new_title = new_title.replace('"','')
+        if "'" in new_title :
+            new_title = new_title.replace("'",'')
+        if "\\" in new_title :
+            new_title = new_title.replace("\\",'')
+        if "/" in new_title :
+            new_title = new_title.replace("/",'')
         os.rename(old_title,new_title+'.mp4')
         #CONVERT
         print("   [*] Converting to mp3")
