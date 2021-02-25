@@ -88,7 +88,6 @@ def main(album_name):
         links_json = songlink_response.json()
         try:
             YT_LINKS.append(links_json['linksByPlatform']['youtube']['url'])
-            print(YT_LINKS[i])
         except KeyError:
             print(f"{requested_tracks[i]} is not found on API database")
             print("Search on youtube(y) or skip(n) : ",end='')
