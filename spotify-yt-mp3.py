@@ -6,8 +6,8 @@ from moviepy.editor import *
 import eyed3
 from apiclient.discovery import build
 
-SP_CLIENT_ID = "XXXXXXXXXXXXXXXXXXXXXXXXXXXX" #replace with your spotify client id
-SP_CLIENT_SECRET = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" #replace with your spotify secret
+SP_CLIENT_ID = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" #replace with your spotify client id
+SP_CLIENT_SECRET = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXX" #replace with your spotify secret
 
 AUTH_URL = 'https://accounts.spotify.com/api/token'
 
@@ -66,10 +66,13 @@ def main(album_name):
 
     requested_tracks_ids = []
     requested_tracks = []
+    requested_tracks_artists = []
     for i in range(len(requested_tracks_index)):
         requested_tracks_ids.append(spotify_b2['tracks']['items'][requested_tracks_index[i]]['id'])
         requested_tracks.append(spotify_b2['tracks']['items'][requested_tracks_index[i]]['name'])
-
+        requested_tracks_artists.append(spotify_b2['tracks']['items'][requested_tracks_index[i]]['artists'][0]['name'])
+        
+    
     album_name = spotify_b2['name'].replace(' (Original Motion Picture Soundtrack)','') if ' (Original Motion Picture Soundtrack)' in spotify_b2['name'] else spotify_b2['name']
 
     #ALBUM ART DOWNLOAD
@@ -111,11 +114,13 @@ def main(album_name):
     for i in range(len(remove)):
         requested_tracks_index.pop(remove[i]+k)
         requested_tracks.pop(remove[i]+k)
+        requested_tracks_artists.pop(remove[i]+k)
         k-=1
 
     # DOWNLOAD,RENAME,CONVERT,ADD METADATA
     print('')
     video_objs = []
+    print(requested_tracks_artists)
     for i in range(len(requested_tracks_index)):
         #DOWNLOAD
         video_objs.append(YouTube(YT_LINKS[i]))
@@ -151,6 +156,7 @@ def main(album_name):
             mp3.initTag()
         mp3.tag.title = requested_tracks[i]
         mp3.tag.album = album_name
+        mp3.tag.artist = requested_tracks_artists[i]
         mp3.tag.images.set(3, open("art.png", 'rb').read(), 'image/png')
         mp3.tag.save(version=eyed3.id3.ID3_V2_3)
     os.remove("art.png")
