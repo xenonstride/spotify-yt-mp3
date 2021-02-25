@@ -120,7 +120,6 @@ def main(album_name):
     # DOWNLOAD,RENAME,CONVERT,ADD METADATA
     print('')
     video_objs = []
-    print(requested_tracks_artists)
     for i in range(len(requested_tracks_index)):
         #DOWNLOAD
         video_objs.append(YouTube(YT_LINKS[i]))
