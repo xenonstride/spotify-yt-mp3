@@ -1,5 +1,5 @@
 # spotify-yt-mp3
-A program to download mp3 songs from YouTube using Spotify and song.link APIs 
+A program to download mp3 songs from YouTube with metadata attached using Spotify and song.link APIs 
 
 Dependencies : pytube, moviepy, eyed3, google-api-python-client
 
