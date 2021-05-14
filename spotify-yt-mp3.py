@@ -21,8 +21,7 @@ auth_response_data = auth_response.json()
 access_token = auth_response_data['access_token']
 
 headers = {
-    'Authorization' : 'Bearer {token}'.format(token=access_token)
-}
+    'Authorization' : f'Bearer {access_token}'
 
 def main(album_name):
     prev_dir = os.getcwd()
