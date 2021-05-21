@@ -5,9 +5,12 @@ from glob import iglob
 from moviepy.editor import *
 import eyed3
 from apiclient.discovery import build
+import json
 
-SP_CLIENT_ID = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" #replace with your spotify client id
-SP_CLIENT_SECRET = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXX" #replace with your spotify secret
+with open("secret.json",'r') as f:
+    data=json.load(f)
+    SP_CLIENT_ID = data["client_id"]
+    SP_CLIENT_SECRET = data["client_secret"]
 
 AUTH_URL = 'https://accounts.spotify.com/api/token'
 
