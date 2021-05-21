@@ -7,7 +7,7 @@ import eyed3
 from apiclient.discovery import build
 import json
 
-with open("secret.json",'r') as f:
+with open("my_secret.json",'r') as f:
     data=json.load(f)
     SP_CLIENT_ID = data["client_id"]
     SP_CLIENT_SECRET = data["client_secret"]
@@ -29,7 +29,7 @@ headers = {
 
 def main(album_name):
     prev_dir = os.getcwd()
-    os.chdir(r"DIR") #replace with your music directory
+    os.chdir(r"C:\Users\hsrip\Music\My-Music") #replace with your music directory
     if path.exists('art.png'):
         os.remove('art.png')
 
@@ -64,8 +64,8 @@ def main(album_name):
         for i in range(no_of_tracks):
             requested_tracks_index.append(i)
     else:
-        for i in range(0,len(requested_str)+1,2):
-            requested_tracks_index.append(int(requested_str[i])-1)
+        requested_tracks_index=requested_str.split(',')
+        requested_tracks_index=[int(a) for a in requested_tracks_index]
 
     requested_tracks_ids = []
     requested_tracks = []
