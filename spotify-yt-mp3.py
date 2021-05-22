@@ -12,7 +12,7 @@ from apiclient.discovery import build
 import shutil
 
 #GET API KEYS FROM secret.json file
-with open("secret.json", 'r') as f:
+with open("my_secret.json", 'r') as f:
     data = json.load(f)
     SP_CLIENT_ID = data["client_id"]
     SP_CLIENT_SECRET = data["client_secret"]
@@ -31,7 +31,7 @@ headers = {
 }
 
 #INVALID CHARACTERS FOR FILE NAMES
-invalid_chars=['\\','/',':','*','?','"','<','>','|']
+invalid_chars=['\\','/',':','*','?','"','<','>','|','%',"'",'.']
 
 #DOWNLOADER FUNCTION FOR MULTITHREADING
 def downloader(link, track_number, requested_tracks, requested_tracks_artists, album_name):
