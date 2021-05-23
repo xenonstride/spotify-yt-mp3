@@ -71,7 +71,7 @@ def main(album_name):
     # REPLACE WITH YOUR MUSIC DIRECTORY
     os.chdir(r"C:\Users\hsrip\Music\My-Music")
 
-    # DOWNLOAD ALBUM ART
+    # DELETE ANY PREVIOUS ALBUM ART
     if path.exists('art.png'):
         os.remove('art.png')
 
