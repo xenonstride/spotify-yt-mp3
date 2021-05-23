@@ -135,11 +135,10 @@ def main(album_name):
 
     # ALBUM ART DOWNLOAD
     r = requests.get(spotify_b2['images'][1]['url'])
-    with open("art.png", 'wb') as f:
+    with open("art0.png", 'wb') as f:
         f.write(r.content)
     
     #CREATE ALBUM ART COPIES FOR EACH THREAD
-    os.rename("art.png","art0.png")
     for i in range(len(requested_tracks)-1):
         shutil.copyfile("art0.png",f"art{i+1}.png")
 
